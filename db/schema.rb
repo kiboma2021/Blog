@@ -10,8 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 20_220_914_210_333) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
+  create_table 'comments', force: :cascade do |t|
+    t.string 'user'
+    t.string 'references'
+    t.string 'post'
+    t.string 'text'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+  end
+
+  create_table 'likes', force: :cascade do |t|
+    t.string 'user'
+    t.string 'post'
+    t.string 'references'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+  end
+
+  create_table 'posts', force: :cascade do |t|
+    t.string 'user'
+    t.string 'references'
+    t.string 'title'
+    t.string 'string'
+    t.string 'text'
+    t.string 'commentsCounter'
+    t.string 'integer'
+    t.string 'likesCounter'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+  end
+
+  create_table 'users', force: :cascade do |t|
+    t.string 'name'
+    t.string 'string'
+    t.string 'photo'
+    t.string 'binary'
+    t.string 'bio'
+    t.string 'text'
+    t.string 'postsCounter'
+    t.string 'integer'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+  end
 end
